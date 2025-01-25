@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <!--
+    Определяем, что это документ в формате HTML5,
+    а lang="en" указывает язык страницы (английский).
+  -->
+  <meta charset="utf-8">
+  <!--
+    Устанавливаем кодировку UTF-8,
+    чтобы правильно отображать все символы (в том числе кириллические).
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--
+    Указываем, что ширина области просмотра (viewport) равна ширине устройства,
+    а масштаб = 1; это важно для адаптивного дизайна на мобильных устройствах.
+  -->
+  <title>Каталог</title>
+  <!--
+    Заголовок страницы: "Каталог" будет отображён на вкладке в браузере.
+  -->
+  <!-- Подключаем Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  >
+  <!--
+    Фреймворк Bootstrap подключается из CDN:
+    - Позволяет быстро использовать готовые стили и сетку для верстки.
+    - integrity и crossorigin нужны для валидации и безопасности (SRI).
+  -->
+</head>
+
+<!--  Семантическая разметка -->
+<header>
+  <!--
+    <header> - семантический блок: обычно содержит «шапку» сайта,
+    лого, главное меню и т.д.
+  -->
+  <!-- Меню с циклами Django -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!--
+      <nav> - семантический блок навигации;
+      классы Bootstrap:
+      - navbar расширяет div до навигационной панели
+      - navbar-expand-lg указывает, что панель будет развёрнутой
+        на экранах от «large» и больше, а на меньших экранах - сворачиваться
+      - navbar-dark bg-dark даёт тёмный фон и светлые ссылки
+    -->
+    <div class="container-fluid">
+      <!--
+        container-fluid растягивает контейнер на всю доступную ширину
+        (в отличие от container, который имеет фиксированную ширину).
+      -->
+      <!-- Можно добавить бренд или лого, но не меняем логику, поэтому пусть будет пустым -->
+      <a class="navbar-brand" href="#">Мой сайт</a>
+      <!--
+        .navbar-brand - стилизует ссылку как «бренд» (логотип) в Navbar
+        В href="#" сейчас просто ссылка никуда не ведёт.
+      -->
+
+      <!-- Кнопка-иконка при сужении экрана (для мобильных) -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Переключить навигацию"
+      >
+        <!--
+          .navbar-toggler создаёт кнопку «гамбургер».
+          data-bs-toggle="collapse" и data-bs-target="#navbarSupportedContent"
+          указывают, какой блок будет сворачиваться/разворачиваться при нажатии.
+        -->
+        <span class="navbar-toggler-icon"></span>
+        <!--
+          .navbar-toggler-icon - встроенная иконка в Bootstrap
+          (три горизонтальные линии).
+        -->
+      </button>
+
+      <!-- Здесь располагается список ссылок (ул) -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!--
+          collapse - класс, который разворачивается/сворачивается с помощью кнопки;
+          id="navbarSupportedContent" совпадает с data-bs-target.
+        -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <!--
+            .navbar-nav - класс Bootstrap для списка навигации
+            .me-auto - даёт автоматический отступ справа
+            .mb-2 mb-lg-0 - отступы снизу на маленьких экранах
+          -->
+          {% for item in menu %}
+            <!--
+              Цикл Django по списку menu. Для каждого элемента (item)
+              создаём <li> со ссылкой.
+            -->
+            <li class="nav-item">
+              <!-- «nav-link» стилизует ссылку -->
+              <a class="nav-link" href="{{ item.url }}">
+                {{ item.title }}
+              </a>
+              <!--
+                {{ item.url }} - подстановка адреса
+                {{ item.title }} - подстановка текста ссылки
+              -->
+            </li>
+            <!-- Показываем разделительную черту, но только если не последний элемент -->
+            {% if not forloop.last %}
+              <!-- Вместо <hr> можно использовать класс «divider», но оставим как есть -->
+              <hr class="text-white m-0">
+              <!--
+                hr - горизонтальная линия;
+                text-white - делает её белой;
+                m-0 - убирает отступы по краям (margin).
+              -->
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Комментарии в шаблоне Django -->
+  {% comment %}
+    <nav>
+      <ul>
+        <li>{{ menu.0 }}</li>
+        <li>{{ menu.1 }}</li>
+        <li>{{ menu.2 }}</li>
+      </ul>
+    </nav>
+  {% endcomment %}
+  <!--
+    Всё, что внутри {% comment %} ... {% endcomment %},
+    не будет отображаться в скомпилированном шаблоне.
+  -->
+</header>
+
+<body class="bg-white">
+  <!--
+    bg-white - класс Bootstrap, задающий белый фон.
+  -->
+  <div class="container mt-3">
+    <!--
+      container - фиксированная ширина и центрирование контента
+      mt-3 - margin-top: 1rem (небольшой отступ сверху)
+    -->
+    <h1 class="mb-3">Каталог новостей</h1>
+    <!--
+      mb-3 - margin-bottom: 1rem (отступ снизу)
+    -->
+    <p class="fw-bold">Всего новостей: {{ news_count }}</p>
+    <!--
+      fw-bold - делает текст полужирным
+      {{ news_count }} - динамическая переменная из Django (количество новостей)
+    -->
+    <p class="fw-bold">Всего пользователей: {{ users_count }}</p>
+    <!--
+      Аналогично, {{ users_count }} - число пользователей,
+      также передаётся во view
+    -->
+  </div>
+
+  <!-- Подключаем Bootstrap JS (для работы навбара и пр.) -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+  <!--
+    Скрипт Bootstrap из CDN. bundle включает Popper
+    (библиотеку для всплывающих подсказок и выпадающих меню).
+  -->
+</body>
+</html>

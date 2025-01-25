@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Список новостей{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-5 fw-bold">Добро пожаловать в новости</h1>
+    <p class="col-md-8 fs-4">Будьте в курсе последних событий и трендов. Читайте новости из самых разных категорий!</p>
+    <a href="#categories" class="btn btn-primary btn-lg">Посмотреть категории</a>
+</div>
+
+<h2 id="categories" class="mt-4">Категории:</h2>
+<ul class="list-group mb-4">
+    {% for category in categories %}
+    <li class="list-group-item">
+        <a href="{% url 'news_by_category' category.slug %}">{{ category.name }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+<h2>Все новости:</h2>
+<div class="row">
+    {% for item in news %}
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">{{ item.title }}</h5>
+                <p class="card-text">Категория: {{ item.category.name }}</p>
+                <a href="{% url 'news_detail' item.id %}" class="btn btn-primary">Читать дальше</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

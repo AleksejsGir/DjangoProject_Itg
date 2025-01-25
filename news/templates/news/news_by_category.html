@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Категория: {{ category.name }}{% endblock %}
+
+{% block content %}
+<h1>Категория: {{ category.name }}</h1>
+
+<h2 class="mt-4">Новости:</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Заголовок</th>
+            <th>Ссылка</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in news %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ item.title }}</td>
+            <td><a href="{% url 'news_detail' item.id %}" class="btn btn-sm btn-primary">Читать</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'news_list' %}" class="btn btn-secondary">Вернуться ко всем новостям</a>
+{% endblock %}
