@@ -1,25 +1,9 @@
-"""
-URL configuration for Django_Aleksej project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
-from django.urls import path
-from news import views  # Импортируем представление
+from django.urls import path, include
+from django.shortcuts import redirect  # Импортируем redirect
 
 urlpatterns = [
-    path('admin/', admin.site.urls),  # Маршрут для панели администратора
-    path('', views.index, name='index'),  # Маршрут для главной страницы
+    path('admin/', admin.site.urls),
+    path('news/', include('news.urls')),  # Все маршруты приложения news
+    path('', lambda request: redirect('news_list')),  # Перенаправляем на главную страницу новостей
 ]
-
