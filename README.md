@@ -139,7 +139,8 @@ DjangoProject_Itg/
 
 ## Скриншоты
 
-![Главная страница](static/images/screenshot_main.png)
+![Главная страница](screenshots/img.png)
+
 
 ---
 
