@@ -50,7 +50,7 @@ DjangoProject_Itg/
 ## 📦 **Установка**
 1. Клонируйте репозиторий:
    ```bash
-   git clone https://github.com/ваш-профиль/ваш-проект.git
+   git clone https://github.com/AleksejsGir/DjangoProject_Itg.git
    ```
 2. Установите зависимости:
    ```bash
@@ -88,11 +88,11 @@ DjangoProject_Itg/
 ---
 
 ## ✍️ **Контрибьюторы**
-- **Ваше имя** — разработчик и дизайнер.
-- **Другие участники** — если есть.
+- **Aleksej** — разработчик и дизайнер.
+
 
 ---
 
 ## 📩 **Контакты**
-✉️ Email: [ваш-email@example.com](mailto:ваш-email@example.com)  
-🔗 GitHub: [ваш-аккаунт](https://github.com/ваш-аккаунт)
+✉️ Email: aleksej.it.gir@gmail.com  
+🔗 GitHub: https://github.com/AleksejsGir/DjangoProject_Itg
