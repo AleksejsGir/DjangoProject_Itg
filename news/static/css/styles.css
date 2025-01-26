@@ -88,13 +88,13 @@ th, td {
 
 th {
     background-color: #21262d;
-    color: #ffffff !important; /* Сделаем текст заголовков ярче */
+    color: #ffffff !important;
     font-size: 1.1rem;
     font-weight: bold;
 }
 
 td {
-    color: #c9d1d9 !important; /* Убедимся, что текст в таблице видим */
+    color: #c9d1d9 !important;
 }
 
 tr:hover {
@@ -115,4 +115,47 @@ footer a {
 }
 footer a:hover {
     color: #1f6feb;
+}
+/* Стили для таблиц */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #c9d1d9; /* Светлый текст для таблицы */
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #30363d; /* Цвет границы */
+}
+
+th {
+    background-color: #21262d; /* Тёмный фон для заголовков */
+    color: #ffffff !important; /* Белый текст для заголовков */
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+td {
+    color: #c9d1d9 !important; /* Светлый текст для ячеек */
+    font-size: 1rem;
+}
+
+tr:hover {
+    background-color: #161b22; /* Подсветка строки при наведении */
+}
+
+/* Увеличиваем контраст для кнопок в таблице */
+.btn {
+    background-color: #1f6feb;
+    border-color: #1f6feb;
+    color: #ffffff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn:hover {
+    background-color: #58a6ff;
+    border-color: #58a6ff;
 }

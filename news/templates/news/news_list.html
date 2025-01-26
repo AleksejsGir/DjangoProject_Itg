@@ -10,13 +10,14 @@
 </div>
 
 <h2 id="categories" class="mt-4">Категории:</h2>
-<ul class="list-group mb-4">
+<div class="category-buttons d-flex flex-wrap mb-4">
     {% for category in categories %}
-    <li class="list-group-item">
-        <a href="{% url 'news_by_category' category.slug %}">{{ category.name }}</a>
-    </li>
+    <a href="{% url 'news_by_category' category.slug %}" class="btn btn-outline-primary m-2 d-flex align-items-center">
+        <i class="bi bi-folder me-2"></i> <!-- Иконка папки -->
+        {{ category.name }}
+    </a>
     {% endfor %}
-</ul>
+</div>
 
 <h2>Все новости:</h2>
 <div class="row">
