@@ -117,35 +117,6 @@ footer a:hover {
     color: #1f6feb;
 }
 
-/* Стили для таблиц */
-th, td {
-    padding: 1rem;
-    text-align: left;
-    border-bottom: 1px solid #30363d; /* Цвет границы */
-}
-
-td {
-    color: #c9d1d9 !important; /* Светлый текст для ячеек */
-    font-size: 1rem;
-}
-
-tr:hover {
-    background-color: #161b22; /* Подсветка строки при наведении */
-}
-
-/* Увеличиваем контраст для кнопок в таблице */
-.btn {
-    background-color: #1f6feb;
-    border-color: #1f6feb;
-    color: #ffffff;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.btn:hover {
-    background-color: #58a6ff;
-    border-color: #58a6ff;
-}
-
 /* Анимация для категорий */
 .category-buttons {
     display: flex;
