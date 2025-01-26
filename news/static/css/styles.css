@@ -5,6 +5,7 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+/* Ссылки */
 a {
     color: #58a6ff;
     text-decoration: none;
@@ -22,6 +23,7 @@ a:hover {
     border-radius: 10px;
     padding: 2rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-size: 1.2rem;
 }
 
 /* Кнопки */
@@ -53,6 +55,7 @@ a:hover {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 1rem;
 }
 .card:hover {
     transform: translateY(-5px);
@@ -60,9 +63,12 @@ a:hover {
 }
 .card-title {
     color: #58a6ff;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 .card-text {
-    color: #8b949e;
+    color: #c9d1d9;
+    font-size: 1rem;
 }
 
 /* Таблицы */
@@ -70,17 +76,25 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 1rem;
+    font-size: 1rem;
+    color: #c9d1d9;
 }
 
 th, td {
-    padding: 0.8rem;
+    padding: 1rem;
     text-align: left;
     border-bottom: 1px solid #30363d;
 }
 
 th {
     background-color: #21262d;
-    color: #ffffff;
+    color: #ffffff !important; /* Сделаем текст заголовков ярче */
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+td {
+    color: #c9d1d9 !important; /* Убедимся, что текст в таблице видим */
 }
 
 tr:hover {

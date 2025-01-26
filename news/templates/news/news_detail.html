@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ news.title }}{% endblock %}
+{% block title %}{{ news_item.title }}{% endblock %}
 
 {% block content %}
-<h1>{{ news.title }}</h1>
-<p><strong>Категория:</strong> {{ news.category.name }}</p>
+<h1>{{ news_item.title }}</h1>
+<p><strong>Категория:</strong> {{ news_item.category.name }}</p>
 <p><strong>Содержимое:</strong></p>
-<p>{{ news.content }}</p>
-<p><strong>Дата создания:</strong> {{ news.created_at }}</p>
+<p>{{ news_item.content }}</p>
+<p><strong>Дата создания:</strong> {{ news_item.created_at }}</p>
 
 <a href="{% url 'news_list' %}" class="btn btn-secondary mt-4">Вернуться ко всем новостям</a>
 {% endblock %}
