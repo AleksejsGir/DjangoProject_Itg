@@ -3,11 +3,11 @@
 {% block title %}{{ news_item.title }}{% endblock %}
 
 {% block content %}
-<h1>{{ news_item.title }}</h1>
-<p><strong>Категория:</strong> {{ news_item.category.name }}</p>
-<p><strong>Содержимое:</strong></p>
-<p>{{ news_item.content }}</p>
-<p><strong>Дата создания:</strong> {{ news_item.created_at }}</p>
+<h1 class="news-title">{{ news_item.title }}</h1>
+<p class="news-category"><strong>Категория:</strong> {{ news_item.category.name }}</p>
+<p class="news-content-title"><strong>Содержимое:</strong></p>
+<p class="news-content">{{ news_item.content }}</p>
+<p class="news-date"><strong>Дата создания:</strong> {{ news_item.created_at }}</p>
 
-<a href="{% url 'news_list' %}" class="btn btn-secondary mt-4">Вернуться ко всем новостям</a>
+<a href="{% url 'news_list' %}" class="btn btn-secondary back-button mt-4">Вернуться ко всем новостям</a>
 {% endblock %}

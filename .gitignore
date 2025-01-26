@@ -7,3 +7,16 @@ venv
 __pycache__
 media
 .env
+
+# Логи и временные файлы
+*.log
+*.pid
+*.pyc
+*.pyo
+
+# Настройки окружения и кэши
+.DS_Store
+Thumbs.db
+
+# Статические файлы (если генерируются)
+staticfiles
