@@ -125,6 +125,7 @@ DjangoProject_Itg/
 
 ## Контакты
 
+
 - Автор: Aleksej Giruckis
 - GitHub: [AleksejGir](https://github.com/AleksejsGir)
 - Email: aleksej.it.gir@gmail.com
@@ -133,13 +134,19 @@ DjangoProject_Itg/
 
 ## Лицензия
 
+
+
+
 Этот проект распространяется под лицензией MIT. Подробности смотрите в файле LICENSE.
 
 ---
 
 ## Скриншоты
 
-![Главная страница](static/images/screenshot_main.png)
+
+![Главная страница](screenshots/img.png)
+
+
 
 ---
 
