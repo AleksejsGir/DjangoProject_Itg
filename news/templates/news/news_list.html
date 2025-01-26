@@ -3,17 +3,19 @@
 {% block title %}Список новостей{% endblock %}
 
 {% block content %}
-<div class="jumbotron" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);">
-    <h1 class="display-4 mb-3" style="font-family: 'Poppins', sans-serif; font-size: 2.5rem; color: #ffffff;">Добро пожаловать на Info to Go</h1>
-    <p class="lead" style="line-height: 1.8; font-family: 'Poppins', sans-serif; font-size: 1.25rem; color: #d1d1d1;">Будьте в курсе самых актуальных событий и трендов! Исследуйте новости из различных категорий и открывайте новые горизонты.</p>
+<div class="jumbotron">
+    <!-- Главный баннер с приветствием -->
+    <h1 class="display-4 mb-3">Добро пожаловать на Info to Go</h1>
+    <p class="lead">Будьте в курсе самых актуальных событий и трендов! Исследуйте новости из различных категорий и открывайте новые горизонты.</p>
 </div>
 
-<h2 id="categories" class="mt-4" style="font-family: 'Poppins', sans-serif; font-size: 2.2rem; color: #ffffff;">Категории:</h2>
-<div class="category-buttons d-flex flex-wrap mb-4" style="gap: 1rem;">
+<h2 id="categories" class="mt-4">Категории:</h2>
+<div class="category-buttons d-flex flex-wrap mb-4">
     {% for category in categories %}
-    <a href="{% url 'news_by_category' category.slug %}" class="btn btn-outline-primary p-3 d-flex align-items-center category-btn" style="font-size: 1.25rem; border-radius: 10px; min-width: 180px; justify-content: center; transition: transform 0.2s ease; color: #58a6ff;">
-        {% if category.name == "Технология" %}<i class="bi bi-cpu me-2"></i>{% endif %} <!-- Условие для отображения иконки для категории 'Технология'. Вы можете добавить дополнительные условия для новых категорий. -->
-        {% if category.name == "Наука и космос" %}<i class="bi bi-rocket me-2"></i>{% endif %} <!-- Условие для отображения иконки для категории 'Наука и космос'. Замените или добавьте иконку при необходимости. -->
+    <a href="{% url 'news_by_category' category.slug %}" class="btn btn-outline-primary category-btn">
+        <!-- Отображение иконки для определённых категорий -->
+        {% if category.name == "Технология" %}<i class="bi bi-cpu me-2"></i>{% endif %}
+        {% if category.name == "Наука и космос" %}<i class="bi bi-rocket me-2"></i>{% endif %}
         {% if category.name == "Крипто" %}<i class="bi bi-currency-bitcoin me-2"></i>{% endif %}
         {% if category.name == "IT-бизнес" %}<i class="bi bi-briefcase me-2"></i>{% endif %}
         {{ category.name }}
@@ -21,58 +23,22 @@
     {% endfor %}
 </div>
 
-<h2 style="font-family: 'Poppins', sans-serif; font-size: 2rem; color: #ffffff;">Все новости:</h2>
+<h2>Все новости:</h2>
 <div class="row">
-    {% for item in news %} <!-- Цикл для отображения списка новостей. Добавьте логику фильтрации или сортировки здесь, если потребуется. -->
-    <div class="col-md-4">
-        <div class="card mb-4" style="transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); background-color: #161b22; border-radius: 10px;">
+    {% for item in news %}
+    <div class="col-md-6 col-lg-4">
+        <div class="card mb-4">
             {% if item.image_url %}
-            <img src="{{ item.image_url }}" class="card-img-top" alt="{{ item.title }}"> <!-- Проверка наличия изображения для новости. Если изображения нет, блок с картинкой пропускается. Возможно, стоит добавить fallback, если изображение отсутствует или не загрузилось. -->
+            <!-- Изображение новости, если оно доступно -->
+            <img src="{{ item.image_url }}" class="card-img-top" alt="{{ item.title }}">
             {% endif %}
             <div class="card-body">
-                <h5 class="card-title" style="font-family: 'Poppins', sans-serif; font-size: 1.25rem; color: #ffffff;">{{ item.title }}</h5>
-                <p class="card-text" style="font-family: 'Poppins', sans-serif; font-size: 0.95rem; color: #d1d1d1;">Категория: {{ item.category.name }}</p>
+                <h5 class="card-title">{{ item.title }}</h5>
+                <p class="card-text">Категория: {{ item.category.name }}</p>
                 <a href="{% url 'news_detail' item.id %}" class="btn btn-primary">Читать дальше</a>
             </div>
         </div>
     </div>
     {% endfor %}
 </div>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
-body {
-    font-family: 'Poppins', sans-serif; /* Убедитесь, что шрифт 'Poppins' применяется ко всем текстовым элементам. */
-}
-
-.card-img-top {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    max-height: 180px;
-    object-fit: cover; /* Стили для изображения в карточке. Убедитесь, что картинки имеют правильный размер и формат. Возможно, стоит добавить fallback, если изображение отсутствует или не загрузилось. */
-}
-
-.card:hover {
-    transform: translateY(-5px); /* Анимация для карточек при наведении. */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Добавление тени при наведении. */
-}
-
-.category-btn:hover {
-    transform: scale(1.05); /* Лёгкая анимация масштабирования при наведении. */
-    background-color: rgba(88, 166, 255, 0.2); /* Подсветка фона при наведении. */
-}
-
-h1 {
-    color: #ffffff;
-    font-size: 2.5rem;
-    font-weight: 600;
-}
-
-h2 {
-    color: #ffffff;
-    font-size: 2.2rem;
-    font-weight: 600;
-}
-</style>
 {% endblock %}
