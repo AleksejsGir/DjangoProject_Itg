@@ -116,26 +116,12 @@ footer a {
 footer a:hover {
     color: #1f6feb;
 }
-/* Стили для таблиц */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-    font-size: 1rem;
-    color: #c9d1d9; /* Светлый текст для таблицы */
-}
 
+/* Стили для таблиц */
 th, td {
     padding: 1rem;
     text-align: left;
     border-bottom: 1px solid #30363d; /* Цвет границы */
-}
-
-th {
-    background-color: #21262d; /* Тёмный фон для заголовков */
-    color: #ffffff !important; /* Белый текст для заголовков */
-    font-size: 1.1rem;
-    font-weight: bold;
 }
 
 td {
